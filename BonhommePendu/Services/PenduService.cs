@@ -22,6 +22,7 @@ namespace BonhommePendu.Services
             if (_gameData == null || _gameData.Won || _gameData.Lost)
             {
                 string randomWord = await GetRandomWord();
+                
                 _gameData = new GameData(randomWord);
                 return _gameData;
             }

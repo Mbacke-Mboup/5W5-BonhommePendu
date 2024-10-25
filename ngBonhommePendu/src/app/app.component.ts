@@ -70,6 +70,7 @@ export class AppComponent {
   }
 
   async applyEvent(event:any){
+    
     if(this.gameData)
     {
       switch(event.eventType){
@@ -80,10 +81,15 @@ export class AppComponent {
         }
         case "RevealLetter": {
           this.gameData.revealedWord = this.setCharAt(this.gameData.revealedWord, event.index, event.letter);
+          console.log(this.gameData.won);
+           
           break;
         }
         case "GuessedLetter": {
           this.gameData.guessedLetters.push(event.letter);
+          
+          console.log(this.gameData.guessedLetters);
+          
           break;
         }
       }
@@ -91,6 +97,7 @@ export class AppComponent {
       if(event.events){
         for(let e of event.events){
           await this.applyEvent(e);
+          
         }
       }
     }
